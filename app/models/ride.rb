@@ -5,7 +5,6 @@ class Ride < ActiveRecord::Base
   def take_ride
     check_if_eligable
     
-    # binding.pry
     if @eligable
       user.tickets -= attraction.tickets
       user.happiness += attraction.happiness_rating

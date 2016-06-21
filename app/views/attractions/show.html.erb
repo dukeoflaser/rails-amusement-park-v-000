@@ -1,0 +1,4 @@
+<%= form_for @attraction, url: url_for(action: 'create', controller: 'rides') do |f| %>
+  <%= f.hidden_field :id %>
+  <%= f.submit 'Go on this ride'%>
+<% end %>

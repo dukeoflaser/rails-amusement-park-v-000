@@ -1,0 +1,5 @@
+<h4>Select Your Name</h4>
+<%= form_for(@user, url: url_for(action: 'create', controller: 'welcome')) do |f| %>
+  <%= f.collection_select(:id, @users, :id, :name) %><br>
+  <%= f.submit "Sign In" %>
+<% end %>
