@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete '/signout', to: 'welcome#signout', as: 'signout'
   
   resources :users
-  resources :attractions, only: [:index, :show]
+  resources :attractions, only: [:index, :show, :new, :create, :edit, :update]
   
   patch 'ride/new', to: 'rides#create'
 end

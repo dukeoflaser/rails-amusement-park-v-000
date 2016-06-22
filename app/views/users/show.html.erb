@@ -1,7 +1,10 @@
 <h1>Welcome to the theme park!</h1>
-<p><b>Name:</b><%= @user.name %></p>
-<p><b>Tickets:</b><%= @user.tickets %></p>
-<p><b>Mood:</b><%= @user.mood %></p>
-<p><b>Height:</b><%= @user.height %></p>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<p><b>Name: </b><%= @user.name %></p>
+<p><b>Tickets: </b><%= @user.tickets %></p>
+<p><b>Mood: </b><%= @user.mood %></p>
+<p><b>Height: </b><%= @user.height %></p>
 <p><b><%= 'ADMIN' if @user.admin %></b></p>
 <p><%= link_to 'See attractions', attractions_path %></p>

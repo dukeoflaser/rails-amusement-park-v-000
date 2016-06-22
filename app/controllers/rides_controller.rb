@@ -2,7 +2,14 @@ class RidesController < ApplicationController
   def create
     ride = Ride.new(ride_params)
     ride.take_ride
-    ride.save
+    
+    if ride.eligable?
+      ride.save
+      flash[:success] = "Thanks for riding the #{ride.attraction_name}!"
+    else
+      flash[:notice] = ride.message
+    end
+    
     redirect_to user_path(current_user)
   end
   
@@ -11,8 +18,5 @@ class RidesController < ApplicationController
     attraction_id = params.require(:attraction)[:id]
     
     {attraction_id: attraction_id, user_id: user_id}
-    # params[:attraction][:user] = current_user
-    # binding.pry
-    # params.require(:attraction).permit(:id, :user)
   end
 end

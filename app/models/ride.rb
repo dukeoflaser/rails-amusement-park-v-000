@@ -4,14 +4,26 @@ class Ride < ActiveRecord::Base
   
   def take_ride
     check_if_eligable
-    
-    if @eligable
+ 
+    if eligable?
       user.tickets -= attraction.tickets
       user.happiness += attraction.happiness_rating
       user.nausea += attraction.nausea_rating
       user.save
     end
-    
+
+    @message
+  end
+  
+  def eligable?
+    @eligable
+  end
+  
+  def attraction_name
+    attraction.name
+  end
+  
+  def message
     @message
   end
   
